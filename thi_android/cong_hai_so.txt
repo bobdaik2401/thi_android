@@ -1,0 +1,39 @@
+package com.example.bt;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Button;
+
+public abstract class cong_hai_so extends AppCompatActivity {
+
+    EditText txta, txtb;
+    TextView txtview;
+    Button cong;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cong_hai_so);
+        cong = findViewById(R.id.btncong);
+        txta = findViewById(R.id.txta);
+        txtb = findViewById(R.id.txtb);
+        cong.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try {
+                    float a = Integer.parseInt(txta.getText().toString());
+                    float b = Integer.parseInt(txtb.getText().toString());
+                    float tong = a + b;
+                    txtview.setText("Ket qua: " + tong);
+
+                } catch (NumberFormatException e) {
+                    txtview.setText("Vui long nhap lai!");
+                }
+            }
+        });
+    }
+}
